@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Header from './components/Header'
 // import heroImg from './assets/hero.png'
 
 
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <>
-      <p className='bg-black text-white'>Hello</p>
+      <div className='bg-[hsl(243_96%_9%)] h-screen w-screen md:pt-6 md:px-12 sm:p-4 p-2'>
+        <Header />
+      </div>
     </>
   )
 }
