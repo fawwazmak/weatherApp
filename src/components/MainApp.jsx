@@ -28,13 +28,14 @@ const MainApp = () => {
         const location = search.trim().replace(/,/g, ' ').replace(/\s+/g, ' ');
         const formattedLocation = location.charAt(0).toUpperCase() + location.slice(1);
         const parts = formattedLocation.split(" ");
-        console.log(parts);
 
         fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${formattedLocation}&count=1`)
             .then(response => response.json())
             .then(data => {
-                // const latitude = data.results[0].latitude;
-                console.log(data)})
+                const latitude = data.results[0].latitude;
+                const longitude = data.results[0].longitude;
+                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+            })
             .catch(error => console.log(error))
         ;
 
