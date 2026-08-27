@@ -6,9 +6,9 @@ import { AiOutlineSearch } from "react-icons/ai";
 const MainApp = () => {
     const [search, setSearch] = useState("");
 
-    async function fetchWeatherData() {
+    async function fetchWeatherData(latitude, longitude) {
         try {
-            const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m#");
+            const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m#`);
     
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -34,13 +34,10 @@ const MainApp = () => {
             .then(data => {
                 const latitude = data.results[0].latitude;
                 const longitude = data.results[0].longitude;
-                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                fetchWeatherData(latitude, longitude);
             })
             .catch(error => console.log(error))
         ;
-
-        // fetchWeatherData();
-
     }
     
 
